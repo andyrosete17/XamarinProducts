@@ -7,8 +7,8 @@
     <ProjectGuid>{590E8216-0A39-44BE-B028-91AD39490F08}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Product.Domain</RootNamespace>
-    <AssemblyName>Product.Domain</AssemblyName>
+    <RootNamespace>Products.Domain</RootNamespace>
+    <AssemblyName>Products.Domain</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Category.cs" />
+    <Compile Include="DataContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
