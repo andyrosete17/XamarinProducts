@@ -1,6 +1,9 @@
 ﻿
 namespace Products.Domain
 {
+    using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
@@ -10,8 +13,11 @@ namespace Products.Domain
         public int CategoryId { get; set; }
 
         [Required(ErrorMessage ="The field {0} is required")]
-        [MaxLength(50, ErrorMessage ="The field {} only can have {1} characters lenght ")]
+        [MaxLength(50, ErrorMessage ="The field {0} only can have {1} characters lenght ")]
         [Index("Category_Description_Index", IsUnique =true)]
         public string Description { get; set; }
+
+        [JsonIgnore]
+        public virtual ICollection<Product>  Products { get; set; }  //Indicate that a category has more than one product associated
     }
 }
