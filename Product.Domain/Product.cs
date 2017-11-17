@@ -26,9 +26,13 @@ namespace Products.Domain
         [Display(Name ="Is Active?")]
         public bool IsActive { get; set; }
 
+        
+        public string Image { get; set; }
+
         public double Stock { get; set; }
 
         [Display(Name = "Last Purshase")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd'/'MM'/'yyyy}")]
         [DataType(DataType.Date)]
         public DateTime LastPurchase { get; set; }
 

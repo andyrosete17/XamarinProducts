@@ -1,14 +1,16 @@
-﻿using Products.Domain;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
-using System.Web.Http;
-using System.Web.Http.Description;
-
+﻿
 namespace Products.APIs.Controllers
 {
+    using Products.Domain;
+    using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
+    using System.Linq;
+    using System.Net;
+    using System.Threading.Tasks;
+    using System.Web.Http;
+    using System.Web.Http.Description;
+
+    [Authorize]
     public class ProductsController : ApiController
     {
         private DataContext db = new DataContext();

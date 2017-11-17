@@ -9,6 +9,7 @@ namespace Products.BackEnds.Controllers
     using System.Threading.Tasks;
     using System.Web.Mvc;
 #endregion Usings
+    
     public class CategoriesController : Controller
     {
         private DataContextLocal db = new DataContextLocal();
@@ -35,6 +36,7 @@ namespace Products.BackEnds.Controllers
         }
 
         // GET: Categories/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -58,6 +60,7 @@ namespace Products.BackEnds.Controllers
         }
 
         // GET: Categories/Edit/5
+        [Authorize]
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
@@ -89,6 +92,7 @@ namespace Products.BackEnds.Controllers
         }
 
         // GET: Categories/Delete/5
+        [Authorize]
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)

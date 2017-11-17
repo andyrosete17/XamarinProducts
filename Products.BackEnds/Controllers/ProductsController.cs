@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
+﻿using Products.BackEnds.Helpers;
 using Products.BackEnds.Models;
 using Products.Domain;
+using System.Data.Entity;
+using System.Net;
+using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace Products.BackEnds.Controllers
 {
@@ -30,7 +26,7 @@ namespace Products.BackEnds.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = await db.Products.FindAsync(id);
+            var product = await db.Products.FindAsync(id);
             if (product == null)
             {
                 return HttpNotFound();
@@ -39,6 +35,7 @@ namespace Products.BackEnds.Controllers
         }
 
         // GET: Products/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "Description");
@@ -50,20 +47,35 @@ namespace Products.BackEnds.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ProductId,CategoryId,Description,Price,IsActive,Stock,LastPurchase,Remarks")] Product product)
+        public async Task<ActionResult> Create(ProductView view)
         {
             if (ModelState.IsValid)
             {
+                var pic = string.Empty;
+                var folder = "~/Content/Images";
+
+                if (view.ImageFile != null)
+                {
+                    pic = FilesHelper.UploadPhoto(view.ImageFile, folder);
+                    pic = string.Format("{0}/{1}", folder, pic);
+                }
+
+                var product = Mappins.ProductMapping.ProductToProductView(view);
+                product.Image = pic;
+
                 db.Products.Add(product);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "Description", product.CategoryId);
-            return View(product);
+            ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "Description", view.CategoryId);
+            return View(view);
         }
 
+
+
         // GET: Products/Edit/5
+        [Authorize]
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
@@ -76,7 +88,8 @@ namespace Products.BackEnds.Controllers
                 return HttpNotFound();
             }
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "Description", product.CategoryId);
-            return View(product);
+            var view = Mappins.ProductMapping.ProductToProductView(product);
+            return View(view);
         }
 
         // POST: Products/Edit/5
@@ -84,19 +97,32 @@ namespace Products.BackEnds.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ProductId,CategoryId,Description,Price,IsActive,Stock,LastPurchase,Remarks")] Product product)
+        public async Task<ActionResult> Edit(ProductView view)
         {
             if (ModelState.IsValid)
             {
+                var pic = view.Image;
+                var folder = "~/Content/Images";
+
+                if (view.ImageFile != null)
+                {
+                    pic = FilesHelper.UploadPhoto(view.ImageFile, folder);
+                    pic = string.Format("{0}/{1}", folder, pic);
+                }
+
+                var product = Mappins.ProductMapping.ProductViewToProduct(view);
+                product.Image = pic;
+
                 db.Entry(product).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "Description", product.CategoryId);
-            return View(product);
+            ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "Description", view.CategoryId);
+            return View(view);
         }
 
         // GET: Products/Delete/5
+        [Authorize]
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)

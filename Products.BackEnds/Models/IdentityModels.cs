@@ -21,7 +21,7 @@ namespace Products.BackEnds.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("ProductsConnection", throwIfV1Schema: false)
         {
         }
 
