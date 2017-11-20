@@ -1,15 +1,25 @@
-﻿using System.ComponentModel;
-
+﻿
 namespace Products.ViewModels
 {
+    using GalaSoft.MvvmLight.Command;
+    using System;
+    using System.ComponentModel;
+    using System.Windows.Input;
+    using Services;
+    using Products.Helpers;
+
     public class LoginViewModel : INotifyPropertyChanged
     {
-        #region Properties
-        public LoginViewModel Login { get; set; }
-        #endregion Properties
+        //#region Properties
+        ////public LoginViewModel Login { get; set; }
+        //#endregion Properties
 
         #region Events
         public event PropertyChangedEventHandler PropertyChanged;
+        #endregion
+
+        #region Services
+        DialogService dialogService;
         #endregion
 
         #region Attributes
@@ -133,9 +143,29 @@ namespace Products.ViewModels
         {
             IsEnable = true;
             IsToggle = true;
+            dialogService = new DialogService();
            // Login = new LoginViewModel();
         }
+        #endregion
 
+        #region Commands
+        public ICommand LoginCommand
+        {
+            get
+            {
+                return new RelayCommand(Login);
+            }
+        }
+        #endregion
+
+        #region PrivateMethods
+        async void Login()
+        {
+            if(string.IsNullOrWhiteSpace(Email))
+            {
+                await dialogService.ShowMessage(Languages.Error, Languages.NoEmail);
+            }
+        }
         #endregion
     }
 
