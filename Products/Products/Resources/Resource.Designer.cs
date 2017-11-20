@@ -134,6 +134,15 @@ namespace Products.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You must enter a password.
+        /// </summary>
+        internal static string NoPassword {
+            get {
+                return ResourceManager.GetString("NoPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password:.
         /// </summary>
         internal static string Password_Label {

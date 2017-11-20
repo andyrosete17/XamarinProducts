@@ -73,6 +73,11 @@ namespace Products.Helpers
             get { return Resource.Login_Facebook; }
         }
 
+        public static string NoPassword
+        {
+            get { return Resource.NoPassword; }
+        }
+
 
     }
 }

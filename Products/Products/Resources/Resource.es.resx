@@ -156,4 +156,7 @@
   <data name="Login_Facebook" xml:space="preserve">
     <value>Iniciar sesión con Facebook</value>
   </data>
+  <data name="NoPassword" xml:space="preserve">
+    <value>Debes ingresar una contraseña</value>
+  </data>
 </root>

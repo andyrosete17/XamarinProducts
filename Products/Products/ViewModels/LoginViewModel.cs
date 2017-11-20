@@ -165,6 +165,10 @@ namespace Products.ViewModels
             {
                 await dialogService.ShowMessage(Languages.Error, Languages.NoEmail);
             }
+            if (string.IsNullOrWhiteSpace(Password))
+            {
+                await dialogService.ShowMessage(Languages.Error, Languages.NoPassword);
+            }
         }
         #endregion
     }
