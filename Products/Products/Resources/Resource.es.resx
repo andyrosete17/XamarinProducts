@@ -159,4 +159,10 @@
   <data name="NoPassword" xml:space="preserve">
     <value>Debes ingresar una contraseña</value>
   </data>
+  <data name="InternetError" xml:space="preserve">
+    <value>¡¡¡Error!!! Debes verificar tu conexión a internet</value>
+  </data>
+  <data name="InternetSettingsError" xml:space="preserve">
+    <value>¡¡¡Error!!! Debes verificar tu configuración de internet</value>
+  </data>
 </root>

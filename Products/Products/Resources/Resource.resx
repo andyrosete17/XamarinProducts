@@ -139,4 +139,10 @@
   <data name="NoPassword" xml:space="preserve">
     <value>You must enter a password</value>
   </data>
+  <data name="InternetError" xml:space="preserve">
+    <value>Error!!! You must check your internet connection</value>
+  </data>
+  <data name="InternetSettingsError" xml:space="preserve">
+    <value>Error!!! You must check your internet settings</value>
+  </data>
 </root>

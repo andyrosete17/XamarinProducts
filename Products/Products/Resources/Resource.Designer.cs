@@ -107,6 +107,24 @@ namespace Products.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error!!! You must check your internet connection.
+        /// </summary>
+        internal static string InternetError {
+            get {
+                return ResourceManager.GetString("InternetError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error!!! You must check your internet settings.
+        /// </summary>
+        internal static string InternetSettingsError {
+            get {
+                return ResourceManager.GetString("InternetSettingsError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Login.
         /// </summary>
         internal static string Login {

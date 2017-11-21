@@ -78,6 +78,15 @@ namespace Products.Helpers
             get { return Resource.NoPassword; }
         }
 
+        public static string InternetError
+        {
+            get { return Resource.InternetError; }
+        }
+
+        public static string InternetSettingsError
+        {
+            get { return Resource.InternetSettingsError; }
+        }
 
     }
 }
