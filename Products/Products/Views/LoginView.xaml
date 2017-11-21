@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:Products.Helpers"
              x:Class="Products.Views.LoginView"
-            BindingContext = "{Binding Main, Source={StaticResource Locator}}"
+             BindingContext = "{Binding Main, Source={StaticResource Locator}}"
              Title="Login">
     <ContentPage.Content>
         <StackLayout
@@ -29,20 +29,20 @@
                 <Entry 
                     Grid.Column="1"
                     Grid.Row="0"
-                    
+                     Placeholder="{i18n:Translate Email_placeHolder}"
                     Text="{Binding Email, Mode=TwoWay}">
                 </Entry>
                 <Label 
                     Grid.Column="0"
                     Grid.Row="1"
-                    Text="{i18n: Translate Password_Label}"
+                    Text="{i18n:Translate Password_Label}"
                     VerticalOptions="Center"
                     />
                 <Entry 
                     Grid.Column="1"
                     Grid.Row="1"
                     IsPassword="True"
-                    Placeholder="{i18n: Translate Password_placeHolder}"
+                    Placeholder="{i18n:Translate Password_placeHolder}"
                     Text="{Binding Password, Mode=TwoWay}">
                 </Entry>
             </Grid>

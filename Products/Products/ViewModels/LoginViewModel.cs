@@ -2,11 +2,11 @@
 namespace Products.ViewModels
 {
     using GalaSoft.MvvmLight.Command;
-    using System;
+    using Products.Helpers;
+    using Services;
     using System.ComponentModel;
     using System.Windows.Input;
-    using Services;
-    using Products.Helpers;
+    using Xamarin.Forms;
 
     public class LoginViewModel : INotifyPropertyChanged
     {
@@ -20,6 +20,7 @@ namespace Products.ViewModels
 
         #region Services
         DialogService dialogService;
+        ApiService apiService;
         #endregion
 
         #region Attributes
@@ -144,7 +145,7 @@ namespace Products.ViewModels
             IsEnable = true;
             IsToggle = true;
             dialogService = new DialogService();
-           // Login = new LoginViewModel();
+            apiService = new ApiService();
         }
         #endregion
 
@@ -169,6 +170,31 @@ namespace Products.ViewModels
             {
                 await dialogService.ShowMessage(Languages.Error, Languages.NoPassword);
             }
+
+            IsRunning = true;
+            IsEnable = false;
+
+            var connection = await apiService.CheckConnection();
+            if (!connection.isSucess)
+            {
+                IsRunning = false;
+                IsEnable = true;
+                await dialogService.ShowMessage(Languages.Error, connection.Message);
+                return;
+            }
+
+            var response = await apiService.GetToken(Application.Current.Resources["URLAPI"].ToString(), Email, Password);
+
+            if (response == null || string.IsNullOrEmpty(response.AccessToken))
+            {
+                IsRunning = false;
+                IsEnable = true;
+                await dialogService.ShowMessage(Languages.Error, response.ErrorDescription);
+                Password = null;
+                return;
+            }
+
+            await dialogService.ShowMessage("", Languages.Welcome);
         }
         #endregion
     }

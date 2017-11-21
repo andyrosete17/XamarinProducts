@@ -88,5 +88,25 @@ namespace Products.Helpers
             get { return Resource.InternetSettingsError; }
         }
 
+        public static string RecordAdded
+        {
+            get { return Resource.RecordAdded; }
+        }
+
+        public static string RecordUpdated
+        {
+            get { return Resource.RecordUpdated; }
+        }
+
+        public static string RecordDeleted
+        {
+            get { return Resource.RecordDeleted; }
+        }
+
+        public static string Welcome
+        {
+            get { return Resource.Welcome; }
+        }
+
     }
 }

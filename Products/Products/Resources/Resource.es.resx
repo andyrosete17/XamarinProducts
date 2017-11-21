@@ -165,4 +165,16 @@
   <data name="InternetSettingsError" xml:space="preserve">
     <value>¡¡¡Error!!! Debes verificar tu configuración de internet</value>
   </data>
+  <data name="RecordAdded" xml:space="preserve">
+    <value>Registro añadido!!!</value>
+  </data>
+  <data name="RecordUpdated" xml:space="preserve">
+    <value>Registro actualizado!!!</value>
+  </data>
+  <data name="RecordDeleted" xml:space="preserve">
+    <value>Registro eliminado!!!</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Bienvenido</value>
+  </data>
 </root>

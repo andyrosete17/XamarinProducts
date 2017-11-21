@@ -179,6 +179,33 @@ namespace Products.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Record added!!!.
+        /// </summary>
+        internal static string RecordAdded {
+            get {
+                return ResourceManager.GetString("RecordAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Record deleted!!!.
+        /// </summary>
+        internal static string RecordDeleted {
+            get {
+                return ResourceManager.GetString("RecordDeleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Record updated!!!.
+        /// </summary>
+        internal static string RecordUpdated {
+            get {
+                return ResourceManager.GetString("RecordUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Register New User.
         /// </summary>
         internal static string Register_New_User {
@@ -202,6 +229,15 @@ namespace Products.Resources {
         internal static string Title {
             get {
                 return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Welcome.
+        /// </summary>
+        internal static string Welcome {
+            get {
+                return ResourceManager.GetString("Welcome", resourceCulture);
             }
         }
     }

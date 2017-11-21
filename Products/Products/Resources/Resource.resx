@@ -145,4 +145,16 @@
   <data name="InternetSettingsError" xml:space="preserve">
     <value>Error!!! You must check your internet settings</value>
   </data>
+  <data name="RecordAdded" xml:space="preserve">
+    <value>Record added!!!</value>
+  </data>
+  <data name="RecordUpdated" xml:space="preserve">
+    <value>Record updated!!!</value>
+  </data>
+  <data name="RecordDeleted" xml:space="preserve">
+    <value>Record deleted!!!</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Welcome</value>
+  </data>
 </root>
