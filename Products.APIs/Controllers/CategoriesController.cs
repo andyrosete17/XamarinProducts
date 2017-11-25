@@ -11,7 +11,7 @@ namespace Products.APIs.Controllers
     using System.Threading.Tasks;
     using System.Web.Http;
     using System.Web.Http.Description;
-    using Products.APIs.;
+    using Products.APIs.Helper;
 
     [Authorize]
     public class CategoriesController : ApiController
@@ -29,19 +29,16 @@ namespace Products.APIs.Controllers
                 var productsResponse = new List<ProductResponse>();
                 foreach (var product in category.Products)
                 {
-                    productsResponse.Add(ProductResponseFromProducts(product));
+                    productsResponse.Add(ProductResponseFromProduct.ProductResponseFromProducts(product));
                 }
 
-                categoriesResponse.Add(new CategoryResponse
-                {
-                    CategoryId = category.CategoryId,
-                    Description = category.Description,
-                    Products = productsResponse
-                });
+                categoriesResponse.Add(CategoryResponseFromCategories.CategoryResponseFromCategory(category, productsResponse));
             }
 
             return Ok(categoriesResponse);
-        }        
+        }
+
+       
 
         // GET: api/Categories/5
         [ResponseType(typeof(Category))]

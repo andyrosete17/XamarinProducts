@@ -1,11 +1,11 @@
 ﻿
-namespace Products.APIs.Mappins
+namespace Products.APIs.Helper
 {
     using Products.APIs.Models;
     using Products.Domain;
     public class ProductResponseFromProduct
     {
-        public ProductResponse ProductResponseFromProducts(Product product)
+        public static ProductResponse ProductResponseFromProducts(Product product)
         {
             return new ProductResponse
             {
