@@ -3,6 +3,7 @@ namespace Products.ViewModels
 {
     using GalaSoft.MvvmLight.Command;
     using Products.Helpers;
+    using Products.Views;
     using Services;
     using System.ComponentModel;
     using System.Windows.Input;
@@ -10,10 +11,7 @@ namespace Products.ViewModels
 
     public class LoginViewModel : INotifyPropertyChanged
     {
-        //#region Properties
-        ////public LoginViewModel Login { get; set; }
-        //#endregion Properties
-
+       
         #region Events
         public event PropertyChangedEventHandler PropertyChanged;
         #endregion
@@ -165,17 +163,19 @@ namespace Products.ViewModels
             if(string.IsNullOrWhiteSpace(Email))
             {
                 await dialogService.ShowMessage(Languages.Error, Languages.NoEmail);
+                return;
             }
-            if (string.IsNullOrWhiteSpace(Password))
+             if (string.IsNullOrWhiteSpace(Password))
             {
                 await dialogService.ShowMessage(Languages.Error, Languages.NoPassword);
+                return;
             }
 
             IsRunning = true;
             IsEnable = false;
 
             var connection = await apiService.CheckConnection();
-            if (!connection.isSucess)
+            if (!connection.isSuccess)
             {
                 IsRunning = false;
                 IsEnable = true;
@@ -194,7 +194,18 @@ namespace Products.ViewModels
                 return;
             }
 
-            await dialogService.ShowMessage("", Languages.Welcome);
+            //Singleton continues here
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.Categories = new CategoriesViewModel();
+            mainViewModel.Token = response; //keep the token to call the api methods
+
+            ///Like this you call the categories view, you made a push in a pile indicating the new page to navigate
+            await Application.Current.MainPage.Navigation.PushAsync(new CategoriesView());
+
+            Email = null;
+            Password = null;
+            IsRunning = false;
+            IsEnable = true;
         }
         #endregion
     }

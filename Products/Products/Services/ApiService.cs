@@ -17,7 +17,7 @@ namespace Products.Services
         public async Task<Response> CheckConnection()
         {
             var result = new Response();
-            result.isSucess = false;
+            result.isSuccess = false;
             if (!CrossConnectivity.Current.IsConnected)
             {
                 result.Message = Languages.InternetError;
@@ -30,7 +30,7 @@ namespace Products.Services
             }
             else
             {
-                result.isSucess = true;
+                result.isSuccess = true;
             }
 
             return result;
@@ -70,7 +70,7 @@ namespace Products.Services
                 {
                     return new Response
                     {
-                        isSucess = false,
+                        isSuccess = false,
                         Message = response.StatusCode.ToString()
                     };
                 }
@@ -78,7 +78,7 @@ namespace Products.Services
                 var model = JsonConvert.DeserializeObject<T>(result);
                 return new Response
                 {
-                    isSucess = true,
+                    isSuccess = true,
                     Message = "OK",
                     Result = model
                 };
@@ -87,7 +87,7 @@ namespace Products.Services
             {
                 return new Response
                 {
-                    isSucess = false,
+                    isSuccess = false,
                     Message = ex.Message
                 };
             }
@@ -107,7 +107,7 @@ namespace Products.Services
                 {
                     return new Response
                     {
-                        isSucess = false,
+                        isSuccess = false,
                         Message = response.StatusCode.ToString()
                     };
                 }
@@ -115,7 +115,7 @@ namespace Products.Services
                 var list = JsonConvert.DeserializeObject<List<T>>(result);
                 return new Response
                 {
-                    isSucess = true,
+                    isSuccess = true,
                     Message = "OK",
                     Result = list
                 };
@@ -124,8 +124,48 @@ namespace Products.Services
             {
                 return new Response
                 {
-                    isSucess = false,
+                    isSuccess = false,
                     Message = ex.Message
+                };
+            }
+        }
+
+        public async Task<Response> GetList<T>(
+            string urlBase, string servicePrefix, string controller,
+            string tokenType, string accessToken, int id)
+        {
+            try
+            {
+                var client = new HttpClient();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(tokenType, accessToken);
+                client.BaseAddress = new Uri(urlBase);
+                var url = string.Format("{0}{1}/{2}", servicePrefix, controller, id);
+                var response = await client.GetAsync(url);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new Response
+                    {
+                        isSuccess = false,
+                        Message = response.StatusCode.ToString(),
+                    };
+                }
+
+                var result = await response.Content.ReadAsStringAsync();
+                var list = JsonConvert.DeserializeObject<List<T>>(result);
+                return new Response
+                {
+                    isSuccess = true,
+                    Message = "Ok",
+                    Result = list,
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Response
+                {
+                    isSuccess = false,
+                    Message = ex.Message,
                 };
             }
         }
@@ -146,7 +186,7 @@ namespace Products.Services
                 {
                     return new Response
                     {
-                        isSucess = false,
+                        isSuccess = false,
                         Message = response.StatusCode.ToString()
                     };
                 }
@@ -155,7 +195,7 @@ namespace Products.Services
 
                 return new Response
                 {
-                    isSucess = true,
+                    isSuccess = true,
                     Message = Languages.RecordAdded,
                     Result = newRecord
                 };
@@ -165,7 +205,7 @@ namespace Products.Services
 
                 return new Response
                 {
-                    isSucess = false,
+                    isSuccess = false,
                     Message = ex.Message
                 };
             }
@@ -186,7 +226,7 @@ namespace Products.Services
                 {
                     return new Response
                     {
-                        isSucess = false,
+                        isSuccess = false,
                         Message = response.StatusCode.ToString()
                     };
                 }
@@ -195,7 +235,7 @@ namespace Products.Services
 
                 return new Response
                 {
-                    isSucess = true,
+                    isSuccess = true,
                     Message = Languages.RecordAdded,
                     Result = newRecord
                 };
@@ -205,7 +245,7 @@ namespace Products.Services
 
                 return new Response
                 {
-                    isSucess = false,
+                    isSuccess = false,
                     Message = ex.Message
                 };
             }
@@ -228,7 +268,7 @@ namespace Products.Services
                 {
                     return new Response
                     {
-                        isSucess = false,
+                        isSuccess = false,
                         Message = response.StatusCode.ToString()
                     };
                 }
@@ -237,7 +277,7 @@ namespace Products.Services
 
                 return new Response
                 {
-                    isSucess = true,
+                    isSuccess = true,
                     Message = Languages.RecordUpdated,
                     Result = newRecord
                 };
@@ -247,7 +287,7 @@ namespace Products.Services
 
                 return new Response
                 {
-                    isSucess = false,
+                    isSuccess = false,
                     Message = ex.Message
                 };
             }
@@ -267,14 +307,14 @@ namespace Products.Services
                 {
                     return new Response
                     {
-                        isSucess = false,
+                        isSuccess = false,
                         Message = response.StatusCode.ToString()
                     };
                 }
             
                 return new Response
                 {
-                    isSucess = true,
+                    isSuccess = true,
                     Message = Languages.RecordDeleted,
                 };
             }
@@ -283,7 +323,7 @@ namespace Products.Services
 
                 return new Response
                 {
-                    isSucess = false,
+                    isSuccess = false,
                     Message = ex.Message
                 };
             }

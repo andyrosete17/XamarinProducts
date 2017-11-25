@@ -2,7 +2,7 @@
 {
     public class Response
     {
-        public bool isSucess { get; set; }
+        public bool isSuccess { get; set; }
         public string Message { get; set; }
         public object Result { get; set; }
     }
