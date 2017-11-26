@@ -140,10 +140,14 @@ namespace Products.ViewModels
         #region Constructors
         public LoginViewModel()
         {
-            IsEnable = true;
-            IsToggle = true;
             dialogService = new DialogService();
             apiService = new ApiService();
+
+            Email = "andyrosete17@gmail.com";
+            Password = "123456";
+
+            IsEnable = true;
+            IsToggle = true;
         }
         #endregion
 
