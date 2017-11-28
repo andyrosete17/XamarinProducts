@@ -110,7 +110,7 @@ namespace Products.APIs.Controllers
                     ex.InnerException.InnerException != null &&
                     ex.InnerException.InnerException.Message.Contains("Index"))
                 {
-                    return BadRequest("There a record with the same description");
+                    return BadRequest("There are a record with the same description");
                 }
                 else
                 {
