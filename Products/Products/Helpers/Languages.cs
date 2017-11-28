@@ -108,5 +108,24 @@ namespace Products.Helpers
             get { return Resource.Welcome; }
         }
 
+        public static string CategoryTitle
+        {
+            get { return Resource.CategoryTitle; }
+        }
+
+        public static string NewCategoryPlaceHolder
+        {
+            get { return Resource.NewCategoryPlaceHolder;}
+        }
+
+        public static string Save
+        {
+            get { return Resource.Save; }
+        }
+
+        public static string NewCategoryError
+        {
+            get { return Resource.NewCategoryError; }
+        }
     }
 }

@@ -157,4 +157,16 @@
   <data name="Welcome" xml:space="preserve">
     <value>Welcome</value>
   </data>
+  <data name="CategoryTitle" xml:space="preserve">
+    <value>Category:</value>
+  </data>
+  <data name="NewCategoryPlaceHolder" xml:space="preserve">
+    <value>Enter the category description...</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="NewCategoryError" xml:space="preserve">
+    <value>You must enter a category description</value>
+  </data>
 </root>

@@ -71,6 +71,15 @@ namespace Products.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Category:.
+        /// </summary>
+        internal static string CategoryTitle {
+            get {
+                return ResourceManager.GetString("CategoryTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email:.
         /// </summary>
         internal static string Email_Label {
@@ -139,6 +148,24 @@ namespace Products.Resources {
         internal static string Login_Facebook {
             get {
                 return ResourceManager.GetString("Login_Facebook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must enter a category description.
+        /// </summary>
+        internal static string NewCategoryError {
+            get {
+                return ResourceManager.GetString("NewCategoryError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter the category description....
+        /// </summary>
+        internal static string NewCategoryPlaceHolder {
+            get {
+                return ResourceManager.GetString("NewCategoryPlaceHolder", resourceCulture);
             }
         }
         
@@ -220,6 +247,15 @@ namespace Products.Resources {
         internal static string Remember_me {
             get {
                 return ResourceManager.GetString("Remember_me", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        internal static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
             }
         }
         

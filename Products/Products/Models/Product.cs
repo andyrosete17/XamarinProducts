@@ -1,4 +1,5 @@
 ﻿using System;
+using Xamarin.Forms;
 
 namespace Products.Models
 {
@@ -21,5 +22,14 @@ namespace Products.Models
         public DateTime LastPurchase { get; set; }
 
         public string Remarks { get; set; }
+
+        public string ImageFullPath
+        {
+            get
+            {
+                return string.Format(Application.Current.Resources["BACKURL"].ToString() + "{0}", 
+                    Image.Substring(1));
+            }
+        }
     }
 }

@@ -3,7 +3,6 @@ namespace Products.ViewModels
 {
     using GalaSoft.MvvmLight.Command;
     using Products.Helpers;
-    using Products.Views;
     using Services;
     using System.ComponentModel;
     using System.Windows.Input;
@@ -19,6 +18,7 @@ namespace Products.ViewModels
         #region Services
         DialogService dialogService;
         ApiService apiService;
+        NavigationService navigationService;
         #endregion
 
         #region Attributes
@@ -142,6 +142,7 @@ namespace Products.ViewModels
         {
             dialogService = new DialogService();
             apiService = new ApiService();
+            navigationService = new NavigationService();
 
             Email = "andyrosete17@gmail.com";
             Password = "123456";
@@ -204,7 +205,8 @@ namespace Products.ViewModels
             mainViewModel.Token = response; //keep the token to call the api methods
 
             ///Like this you call the categories view, you made a push in a pile indicating the new page to navigate
-            await Application.Current.MainPage.Navigation.PushAsync(new CategoriesView());
+            ///La viewmodel no debe tener la vista, se debe aislar, se debe poner en un servicio
+            await navigationService.Navigate("CategoriesView");
 
             Email = null;
             Password = null;

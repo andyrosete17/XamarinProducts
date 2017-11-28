@@ -4,10 +4,10 @@ namespace Products.ViewModels
     using Products.Helpers;
     using Products.Models;
     using Products.Services;
-    using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.ComponentModel;
+    using System.Linq;
     using Xamarin.Forms;
 
     public class CategoriesViewModel :INotifyPropertyChanged
@@ -26,7 +26,8 @@ namespace Products.ViewModels
         #endregion
 
         #region Attributes
-        ObservableCollection<Category> _categories;
+        List<Category> categories;
+        ObservableCollection<Category> _categoriesList;
         #endregion
 
 
@@ -34,34 +35,37 @@ namespace Products.ViewModels
         /// <summary>
         /// Observable collection of categories
         /// Se usa para desplegables (ej: conversacines de whatsap, post de facebook, lista de telf)
+        /// se usa esto porque se refresca automaticamente
         /// </summary>
-        public ObservableCollection<Category> Categories
+        public ObservableCollection<Category> CategoriesList
         {
             get
             {
-                return _categories;
+                return _categoriesList;
             }
             set
             {
-                if (_categories != value)
+                if (_categoriesList != value)
                 {
-                    _categories = value;
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Categories)));
+                    _categoriesList = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CategoriesList)));
                 }
             }
         }
+        
         #endregion 
 
         #region Constructors
         public CategoriesViewModel()
         {
+            instance = this;
             apiService = new ApiService();
             dialogService = new DialogService();
             LoadCategories();
         }
 
         #endregion
-        #region Private Methods
+        #region Methods
         async void LoadCategories()
         {
             var connection = await apiService.CheckConnection();
@@ -87,9 +91,34 @@ namespace Products.ViewModels
                 return;
             }
 
-            var categories = (List<Category>)response.Result;
+           categories = (List<Category>)response.Result;
 
-        } 
+            CategoriesList = new ObservableCollection<Category>(categories.OrderBy(c => c.Description));
+
+        }
+
+        public void AddCategory(Category category)
+        {
+            //Se usa esta variable para al agregarlo al categoriesList poder ordenarlo
+            // se declara categories global como atributos 
+            categories.Add(category);
+            //Se refresca automaticamente porque es un observablecollection
+            //por eso se usa eso en vez de una  lista
+            CategoriesList = new ObservableCollection<Category>(categories.OrderBy(c => c.Description));
+        }
+        #endregion
+
+        #region SingletonCategories
+        public static CategoriesViewModel instance;
+
+        public static CategoriesViewModel GetInstance ()
+        {
+            if(instance == null)
+            {
+                instance = new CategoriesViewModel();
+            }
+            return instance;
+        }
         #endregion
     }
 }

@@ -1,8 +1,9 @@
-﻿using System.Threading.Tasks;
-using Xamarin.Forms;
-
+﻿
 namespace Products.Services
 {
+    using System.Threading.Tasks;
+    using Xamarin.Forms;
+
     class DialogService
     {
         public async Task ShowMessage(string title, string message)

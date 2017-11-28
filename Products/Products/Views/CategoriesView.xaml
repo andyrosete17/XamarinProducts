@@ -3,15 +3,55 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:Products.Helpers"
              x:Class="Products.Views.CategoriesView"
-             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"   
              Title="Categories">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Command="{Binding NewCategoryCommand}"
+            Icon="ic_add_box.png"/>
+    </ContentPage.ToolbarItems>
+    <!--Se hace el binging al mainviewmodel-->
     <ContentPage.Content>
+        <!--Se hace el binging al categories del mainviewmodel-->
         <StackLayout 
-            BindingContext="{Binding Categories}"
+            BindingContext="{Binding Categories}"    
             Padding="5">
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <!-- HasUnevenRows permite que las filas tengan diferente tamaño-->
+            <ListView               
+                HasUnevenRows="True" 
+                ItemsSource="{Binding CategoriesList}">  <!--Debe bindarse a una observable collection-->
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions> <!--Se agregan dos columnas el label y la imagen-->
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    Grid.Column="0"
+                                    HorizontalOptions="FillAndExpand" 
+                                    Text="{Binding Description}"
+                                    FontSize="Large"
+                                    VerticalOptions="Center">
+                                    
+                                </Label>
+                                <Image
+                                    HorizontalOptions="End"
+                                    HeightRequest="50"
+                                    WidthRequest="50"
+                                    Source="ic_launcher">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer 
+                                            Command="{Binding SelectCategoryCommand}">  <!--El comando debe ir en el modelo Category ya que pertenece al ItemSource del list view y-->
+                                        </TapGestureRecognizer>                 <!--Siempre debe ir en el contexto de datos en el binding donde se encuentre-->
+                                    </Image.GestureRecognizers>                 <!--el binding de ese comando es el origen de la lista la que tiene Binding Categories en este caso-->
+                                </Image>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

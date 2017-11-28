@@ -177,4 +177,16 @@
   <data name="Welcome" xml:space="preserve">
     <value>herzlich willkommen</value>
   </data>
+  <data name="CategoryTitle" xml:space="preserve">
+    <value>Kategorie:</value>
+  </data>
+  <data name="NewCategoryPlaceHolder" xml:space="preserve">
+    <value>Geben Sie die Kategoriebeschreibung ein ...</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>speichern</value>
+  </data>
+  <data name="NewCategoryError" xml:space="preserve">
+    <value>Sie müssen eine Kategoriebeschreibung eingeben</value>
+  </data>
 </root>
