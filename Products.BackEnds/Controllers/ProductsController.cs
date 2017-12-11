@@ -60,7 +60,7 @@ namespace Products.BackEnds.Controllers
                     pic = string.Format("{0}/{1}", folder, pic);
                 }
 
-                var product = Mappins.ProductMapping.ProductToProductView(view);
+                var product = Mappins.ProductMapping.ProductViewToProduct(view);
                 product.Image = pic;
 
                 db.Products.Add(product);

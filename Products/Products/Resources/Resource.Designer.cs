@@ -80,6 +80,24 @@ namespace Products.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter the name of the product.
+        /// </summary>
+        internal static string DescriptionProduct_PlaceHolder {
+            get {
+                return ResourceManager.GetString("DescriptionProduct_PlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name:.
+        /// </summary>
+        internal static string DescriptionProductTitle {
+            get {
+                return ResourceManager.GetString("DescriptionProductTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email:.
         /// </summary>
         internal static string Email_Label {
@@ -134,6 +152,15 @@ namespace Products.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Is Active?.
+        /// </summary>
+        internal static string IsActiveTitle {
+            get {
+                return ResourceManager.GetString("IsActiveTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Login.
         /// </summary>
         internal static string Login {
@@ -170,6 +197,24 @@ namespace Products.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You must enter a product description.
+        /// </summary>
+        internal static string NewProductErrorEmptyDescription {
+            get {
+                return ResourceManager.GetString("NewProductErrorEmptyDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must enter a product price.
+        /// </summary>
+        internal static string NewProductErrorEmptyPrice {
+            get {
+                return ResourceManager.GetString("NewProductErrorEmptyPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You must enter an email..
         /// </summary>
         internal static string NoEmail {
@@ -202,6 +247,24 @@ namespace Products.Resources {
         internal static string Password_placeHolder {
             get {
                 return ResourceManager.GetString("Password_placeHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter the price.
+        /// </summary>
+        internal static string Price_PlaceHolder {
+            get {
+                return ResourceManager.GetString("Price_PlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Price:.
+        /// </summary>
+        internal static string PriceTitle {
+            get {
+                return ResourceManager.GetString("PriceTitle", resourceCulture);
             }
         }
         
@@ -256,6 +319,33 @@ namespace Products.Resources {
         internal static string Save {
             get {
                 return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select a category.
+        /// </summary>
+        internal static string SelectCategory {
+            get {
+                return ResourceManager.GetString("SelectCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter the stock.
+        /// </summary>
+        internal static string Stock_PlaceHolder {
+            get {
+                return ResourceManager.GetString("Stock_PlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stock.
+        /// </summary>
+        internal static string StockTitle {
+            get {
+                return ResourceManager.GetString("StockTitle", resourceCulture);
             }
         }
         

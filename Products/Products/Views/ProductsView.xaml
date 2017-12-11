@@ -4,6 +4,13 @@
              x:Class="Products.Views.ProductsView"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="Products">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            BindingContext="{x:Binding Products}"
+            Command="{Binding NewProductCommand}"
+            Icon="ic_add_box.png">
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout
             BindingContext="{Binding Products}"

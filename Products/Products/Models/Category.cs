@@ -2,10 +2,10 @@
 namespace Products.Models
 {
     using GalaSoft.MvvmLight.Command;
-    using Products.ViewModels;
+    using global::Products.ViewModels;
+    using Services;
     using System.Collections.Generic;
     using System.Windows.Input;
-    using Services;
 
     public class Category
     {

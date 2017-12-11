@@ -189,4 +189,34 @@
   <data name="NewCategoryError" xml:space="preserve">
     <value>Vous devez entrer une description de catégorie</value>
   </data>
+  <data name="SelectCategory" xml:space="preserve">
+    <value>Sélectionnez une catégorie</value>
+  </data>
+  <data name="PriceTitle" xml:space="preserve">
+    <value>Le Prix:</value>
+  </data>
+  <data name="Price_PlaceHolder" xml:space="preserve">
+    <value>Entrez le prix</value>
+  </data>
+  <data name="IsActiveTitle" xml:space="preserve">
+    <value>Est-ce actif?</value>
+  </data>
+  <data name="StockTitle" xml:space="preserve">
+    <value>Stock</value>
+  </data>
+  <data name="DescriptionProductTitle" xml:space="preserve">
+    <value>Nom:</value>
+  </data>
+  <data name="DescriptionProduct_PlaceHolder" xml:space="preserve">
+    <value>Entrez le nom du produit</value>
+  </data>
+  <data name="NewProductErrorEmptyDescription" xml:space="preserve">
+    <value>Vous devez entrer la description du produit</value>
+  </data>
+  <data name="NewProductErrorEmptyPrice" xml:space="preserve">
+    <value>Vous devez entrer le prix du produit</value>
+  </data>
+  <data name="Stock_PlaceHolder" xml:space="preserve">
+    <value>Entrez le stock</value>
+  </data>
 </root>

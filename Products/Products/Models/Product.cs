@@ -1,8 +1,9 @@
-﻿using System;
-using Xamarin.Forms;
-
+﻿
 namespace Products.Models
 {
+    using System;
+    using Xamarin.Forms;
+
     public class Product
     {
         public int ProductId { get; set; }
@@ -27,9 +28,17 @@ namespace Products.Models
         {
             get
             {
-                return string.Format(Application.Current.Resources["BACKURL"].ToString() + "{0}", 
+                return string.IsNullOrEmpty(Image) ? "" : string.Format(Application.Current.Resources["BACKURL"].ToString() + "{0}", 
                     Image.Substring(1));
             }
         }
+
+
+        #region Command
+
+        
+        #endregion
+
+       
     }
 }

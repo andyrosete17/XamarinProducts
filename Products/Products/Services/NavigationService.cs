@@ -30,6 +30,13 @@ namespace Products.Services
                                                     new NewCategoryView());
                         break;
                     }
+
+                case "NewProductView":
+                    {
+                        await Application.Current.MainPage.Navigation.PushAsync(
+                                                    new NewProductView());
+                        break;
+                    }
                 default:
                     break;
             }

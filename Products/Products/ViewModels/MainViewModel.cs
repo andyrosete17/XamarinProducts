@@ -13,6 +13,7 @@
         public TokenResponse Token { get; set; }
         public ProductsViewModel Products { get; set; }
         public NewCategoryViewModel NewCategory { get; set; }
+        public NewProductViewModel NewProduct { get; set; }
         #endregion
 
         #region Services
@@ -48,17 +49,29 @@
         }
         #endregion
 
-        
+
 
         #region Commands
         public ICommand NewCategoryCommand
-            {
+        {
             get
             {
                 return new RelayCommand(GoNewCategory);
             }
         }
 
+        //public ICommand NewProductCommand
+        //{
+        //    get
+        //    {
+        //        return new RelayCommand(GoNewProduct);
+        //    }
+        //}
+
+
+        #endregion
+
+        #region Private Methods
         async void GoNewCategory()
         {
             //Siempre que se vaya a navegar hay que bindar la viewmodel
@@ -67,6 +80,14 @@
             NewCategory = new NewCategoryViewModel();
             await navigationService.Navigate("NewCategoryView");
         }
+
+        //async void GoNewProduct()
+        //{
+        //    NewProduct = new NewProductViewModel();
+
+        //    await navigationService.Navigate("NewProductView");
+
+        //}
         #endregion
     }
 }

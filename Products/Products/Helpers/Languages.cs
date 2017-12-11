@@ -127,5 +127,46 @@ namespace Products.Helpers
         {
             get { return Resource.NewCategoryError; }
         }
+
+        public static string SelectCategory
+        {
+            get { return Resource.SelectCategory; }
+        }
+        public static string PriceTitle
+        {
+            get { return Resource.PriceTitle; }
+        }
+        public static string Price_PlaceHolder
+        {
+            get { return Resource.Price_PlaceHolder; }
+        }
+        public static string IsActiveTitle
+        {
+            get { return Resource.IsActiveTitle; }
+        }
+        public static string StockTitle
+        {
+            get { return Resource.StockTitle; }
+        }
+        public static string DescriptionProductTitle
+        {
+            get { return Resource.DescriptionProductTitle; }
+        }
+        public static string DescriptionProduct_PlaceHolder
+        {
+            get { return Resource.DescriptionProduct_PlaceHolder; }
+        }
+        public static string NewProductErrorEmptyPrice
+        {
+            get { return Resource.NewProductErrorEmptyPrice; }
+        }
+        public static string NewProductErrorEmptyDescription
+        {
+            get { return Resource.NewProductErrorEmptyDescription; }
+        }
+        public static string Stock_PlaceHolder
+        {
+            get { return Resource.Stock_PlaceHolder; }
+        }
     }
 }

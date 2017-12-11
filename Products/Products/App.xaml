@@ -15,6 +15,7 @@
             <x:String x:Key ="URLAPI">http://productsapis.azurewebsites.net</x:String>
             <x:String x:Key ="URLPREFIX">/api</x:String>
             <x:String x:Key ="CATEGORYCONTROLLER">/Categories</x:String>
+            <x:String x:Key ="PRODUCTCONTROLLER">/Products</x:String>
             <x:String x:Key ="BACKURL">http://productsbackends.azurewebsites.net/</x:String>
         </ResourceDictionary>
     </Application.Resources>

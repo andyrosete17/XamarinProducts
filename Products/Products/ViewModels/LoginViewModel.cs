@@ -160,6 +160,14 @@ namespace Products.ViewModels
                 return new RelayCommand(Login);
             }
         }
+
+        public ICommand Register
+        {
+            get
+            {
+                return new RelayCommand(RegisterCommand);
+            }
+        }
         #endregion
 
         #region PrivateMethods
@@ -212,6 +220,12 @@ namespace Products.ViewModels
             Password = null;
             IsRunning = false;
             IsEnable = true;
+        }
+
+
+        async void RegisterCommand()
+        {
+            
         }
         #endregion
     }
